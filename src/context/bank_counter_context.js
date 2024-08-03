@@ -21,11 +21,13 @@ export const BankCounterContextProvider = ({ children }) => {
   const [processStatus, setProcessStatus] = useState(false);
 
   const setInitialCountersFunc = (newCounters) => {
+    console.log("Hello setInitialCountersFunc");
     setInitialCounters(newCounters);
     setInitialQueue([]);
   };
 
   const updateCounterStatus = (id, status, current = null) => {
+    console.log("Hello updateCounterStatus");
     setInitialCounters((prevCounters) =>
       prevCounters.map((counter) =>
         counter.id === id ? { ...counter, status, current } : counter
@@ -33,10 +35,10 @@ export const BankCounterContextProvider = ({ children }) => {
     );
   };
 
-  console.log("Hello");
+  console.log("Hello CONTEXT");
 
   const getNextItemFromQueue = useCallback(() => {
-    console.log("Hello");
+    console.log("Hello getNextItemFromQueue");
     if (initialQueue.length > 0) {
       const nextItem = initialQueue.shift();
       setInitialQueue([...initialQueue]);
@@ -47,7 +49,7 @@ export const BankCounterContextProvider = ({ children }) => {
 
   const allocateNextClientToCounter = useCallback(
     (counter) => {
-      console.log("Hello");
+      console.log("Hello allocateNextClientToCounter");
       const nextItem = getNextItemFromQueue();
       if (nextItem !== null) {
         console.log("Hello");
@@ -73,9 +75,9 @@ export const BankCounterContextProvider = ({ children }) => {
   );
 
   useEffect(() => {
-    console.log("Hello");
+    console.log("Hello useEffect");
     if (processStatus) {
-      console.log("Hello");
+      console.log("Hello processStatus");
       initialCounters.forEach((counter) => {
         if (counter.status === "idle") {
           allocateNextClientToCounter(counter);

@@ -9,10 +9,10 @@ const QueueTest = () => {
     useContext(BankCounterContext);
 
   const addPersonToQueue = () => {
-    console.log("Hello");
+    console.log("Hello QueueTest Function");
     setInitialQueue([...initialQueue, initialQueue.length + 1]);
   };
-
+  console.log("Hello QueueTest");
   return (
     <div className="text-center border-b pb-8 mb-8">
       <table className="min-w-full border text-center text-sm font-light border-gray-400 dark:border-neutral-500">

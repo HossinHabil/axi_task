@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Counter = ({ id, status, current, processed }) => {
+  console.log("Hello Counter");
   return (
     <tr className="text-center border-b border-gray-400 dark:border-neutral-500">
       <td className="whitespace-nowrap text-black dark:text-white border-r px-6 py-4 font-medium border-gray-400 dark:border-neutral-500">{`Counter ${id}`}</td>

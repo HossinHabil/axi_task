@@ -15,14 +15,16 @@ export const InitialSettings = () => {
   });
 
   const handleChange = (e) => {
+    console.log('Hello InitialSettings Handle')
     const { name, value } = e.target;
     setSettings((prev) => ({
       ...prev,
       [name]: value !== "" ? parseInt(value) : "",
     }));
   };
-
+  console.log('Hello InitialSettings')
   const applySettings = () => {
+    console.log('Hello InitialSettings Apply')
     const newCounters = [
       { id: 1, processingTime: settings.counter1 || 0, status: "idle", current: null, processed: [] },
       { id: 2, processingTime: settings.counter2 || 0, status: "idle", current: null, processed: [] },
