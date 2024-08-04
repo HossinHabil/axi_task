@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useContext } from "react";
+
 import { BankCounterContext } from "@/context/bank_counter_context";
 
 export const InitialSettings = () => {
-  const { setInitialCounters, setInitialQueue, setProcessStatus } =
+  const { setInitialCounters, setInitialQueue, setProcessStatus, setArrayLength } =
     useContext(BankCounterContext);
   const [settings, setSettings] = useState({
     counter1: 0,
@@ -15,16 +16,13 @@ export const InitialSettings = () => {
   });
 
   const handleChange = (e) => {
-    console.log('Hello InitialSettings Handle')
     const { name, value } = e.target;
     setSettings((prev) => ({
       ...prev,
       [name]: value !== "" ? parseInt(value) : "",
     }));
   };
-  console.log('Hello InitialSettings')
   const applySettings = () => {
-    console.log('Hello InitialSettings Apply')
     const newCounters = [
       { id: 1, processingTime: settings.counter1 || 0, status: "idle", current: null, processed: [] },
       { id: 2, processingTime: settings.counter2 || 0, status: "idle", current: null, processed: [] },
@@ -34,6 +32,7 @@ export const InitialSettings = () => {
     setInitialCounters(newCounters);
 
     const queue = Array.from({ length: settings.startNumber || 0 }, (_, i) => i + 1);
+    setArrayLength(queue.length);
     setInitialQueue(queue);
     setProcessStatus(true);
   };
